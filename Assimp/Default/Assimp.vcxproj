@@ -156,7 +156,7 @@
     <ClCompile Include="Assimp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Public\Assimp_Defines.h" />
+    <ClInclude Include="..\Public\AssimpDefines.h" />
     <ClInclude Include="..\public\MainConverter.h" />
     <ClInclude Include="..\public\ModelConverter.h" />
   </ItemGroup>

@@ -30,6 +30,13 @@
 
 #include "DirectXTex/DirectXTex.h"
 
+#ifdef _DEBUG
+#include "imgui.h"
+#include "backends/imgui_impl_win32.h"
+#include "backends/imgui_impl_dx11.h"
+#include "ImGuiFileDialog.h"
+#endif // _DEBUG
+
 #include <iostream>
 #include <vector>
 #include <list>
@@ -51,11 +58,11 @@
 namespace fs = std::filesystem;
 using namespace DirectX;
 
-#include "Engine_Typedef.h"
-#include "Engine_Macro.h"
-#include "Engine_Struct.h"
-#include "Engine_Function.h"
-#include "Engine_Model_Defines.h"
+#include "EngineTypedef.h"
+#include "EngineMacro.h"
+#include "EngineStruct.h"
+#include "EngineFunction.h"
+#include "EngineModelDefines.h"
 
 #ifdef _DEBUG
 
@@ -66,9 +73,11 @@ using namespace DirectX;
 #ifndef DBG_NEW 
 
 #define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ ) 
-#define new DBG_NEW 
+#define _new DBG_NEW
 
 #endif
+#else // Release
+#define _new	new
 
 #endif // _DEBUG
 

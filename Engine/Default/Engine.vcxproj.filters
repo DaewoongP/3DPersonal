@@ -1,35 +1,164 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="..\Public\Engine_Typedef.h">
+    <ClInclude Include="..\Public\EngineTypedef.h">
       <Filter>99. Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\Engine_Defines.h">
+    <ClInclude Include="..\Public\EngineDefines.h">
       <Filter>99. Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\Engine_Function.h">
+    <ClInclude Include="..\Public\EngineFunction.h">
       <Filter>99. Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\Engine_Macro.h">
+    <ClInclude Include="..\Public\EngineMacro.h">
       <Filter>99. Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\Engine_Model_Defines.h">
+    <ClInclude Include="..\Public\EngineModelDefines.h">
       <Filter>99. Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\Engine_Struct.h">
+    <ClInclude Include="..\Public\EngineStruct.h">
       <Filter>99. Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\Base.h" />
+    <ClInclude Include="..\Public\Base.h">
+      <Filter>98. Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>96. ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui.h">
+      <Filter>96. ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_internal.h">
+      <Filter>96. ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\ImGuiFileDialog.h">
+      <Filter>96. ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\ImGuiFileDialogConfig.h">
+      <Filter>96. ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_rectpack.h">
+      <Filter>96. ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_textedit.h">
+      <Filter>96. ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_truetype.h">
+      <Filter>96. ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\backends\imgui_impl_win32.h">
+      <Filter>96. ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\backends\imgui_impl_dx11.h">
+      <Filter>96. ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\GraphicManager.h">
+      <Filter>00. System\00. Device\00. Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\GameInstance.h">
+      <Filter>01. Utility\00. GameInstance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\TimerManager.h">
+      <Filter>00. System\00. Device\01. Timer\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\Timer.h">
+      <Filter>00. System\00. Device\01. Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\ImGuiManager.h">
+      <Filter>96. ImGui\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="99. Headers">
       <UniqueIdentifier>{f1c972a8-f557-4982-a924-78452950d35b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="98. Base">
+      <UniqueIdentifier>{999afdec-8da1-435f-94b0-fb124924eac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="96. ImGui">
+      <UniqueIdentifier>{dc9f156d-4a61-43c5-9916-69c64e3852ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. System">
+      <UniqueIdentifier>{2bd3e264-2aed-46be-b56d-0d5ce6c5c9b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility">
+      <UniqueIdentifier>{a0371bc2-2082-4c59-8cc3-ee29633363e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\00. GameInstance">
+      <UniqueIdentifier>{e3dc1554-490b-4016-b1c4-d8cc558659f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. System\00. Device">
+      <UniqueIdentifier>{6f76a82d-24a8-415f-b5e1-a77c80d18a4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. System\00. Device\00. Graphic">
+      <UniqueIdentifier>{42343fa5-cfc0-49ce-b03f-d6ac1b328b76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. System\00. Device\03. Sound">
+      <UniqueIdentifier>{a7e0dc85-ed7f-4369-ad61-2f4c4f448885}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. System\00. Device\02. Input">
+      <UniqueIdentifier>{567e493b-d10a-44bb-8ddc-48294a6ae219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. System\00. Device\01. Timer">
+      <UniqueIdentifier>{c8d0c7f6-87fe-410f-84d1-20dea2587225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. System\00. Device\01. Timer\Manager">
+      <UniqueIdentifier>{20ebbc2a-19ac-4c71-9706-00ee822129b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="96. ImGui\Manager">
+      <UniqueIdentifier>{b31dbc9b-6ebb-4107-a85f-193cddbb2295}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Public\Engine_Struct.cpp">
+    <ClCompile Include="..\Public\EngineStruct.cpp">
       <Filter>99. Headers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\Base.cpp" />
+    <ClCompile Include="..\Private\Base.cpp">
+      <Filter>98. Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui.cpp">
+      <Filter>96. ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_demo.cpp">
+      <Filter>96. ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_draw.cpp">
+      <Filter>96. ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_tables.cpp">
+      <Filter>96. ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_widgets.cpp">
+      <Filter>96. ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\ImGuiFileDialog.cpp">
+      <Filter>96. ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\backends\imgui_impl_win32.cpp">
+      <Filter>96. ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\backends\imgui_impl_dx11.cpp">
+      <Filter>96. ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\GraphicManager.cpp">
+      <Filter>00. System\00. Device\00. Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\GameInstance.cpp">
+      <Filter>01. Utility\00. GameInstance</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\TimerManager.cpp">
+      <Filter>00. System\00. Device\01. Timer\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\Timer.cpp">
+      <Filter>00. System\00. Device\01. Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\ImGuiManager.cpp">
+      <Filter>96. ImGui\Manager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImGui\Imgui.filters">
+      <Filter>96. ImGui</Filter>
+    </None>
   </ItemGroup>
 </Project>

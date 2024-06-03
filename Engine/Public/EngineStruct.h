@@ -2,13 +2,7 @@
 
 namespace Engine
 {
-	typedef struct tagGraphicDesc
-	{
-		enum WINMODE { WM_FULL, WM_WIN, WM_END };
-		HWND			Hwnd;
-		unsigned int	ViewportSizeX, ViewportSizeY;
-		WINMODE			WinMode;
-	}GRAPHICDESC;
+	enum class WindowType { FULL, WIN, TYPEEND };
 
 	typedef struct tagVertex_Position
 	{

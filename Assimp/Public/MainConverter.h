@@ -1,5 +1,5 @@
 #pragma once
-#include "Assimp_Defines.h"
+#include "AssimpDefines.h"
 #include "ModelConverter.h"
 
 BEGIN(Assimp)

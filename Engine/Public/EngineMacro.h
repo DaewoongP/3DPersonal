@@ -125,7 +125,7 @@
 		static CLASSNAME*	mInstance;							\
 		public:													\
 		static CLASSNAME*	GetInstance( void );				\
-		static void DestroyInstance( void );					\
+		static unsigned int DestroyInstance( void );			\
 
 #define IMPLEMENT_SINGLETON(CLASSNAME)							\
 		CLASSNAME*	CLASSNAME::mInstance = nullptr;				\
@@ -135,11 +135,15 @@
 			}													\
 			return mInstance;									\
 		}														\
-		void CLASSNAME::DestroyInstance( void ) {				\
+		unsigned int CLASSNAME::DestroyInstance( void ) {		\
+			unsigned int refCnt{ 0 };						    \
 			if(nullptr != mInstance)							\
 			{													\
-				delete mInstance;								\
+				refCnt = mInstance->Release();				    \
+				if(0 == refCnt)								    \
+					mInstance = { nullptr };					\
 			}													\
+			return refCnt;									    \
 		}														\
 
 #define GET_SINGLE(CLASSNAME)    CLASSNAME::GetInstance()

@@ -4,6 +4,6 @@
     <ClCompile Include="Client.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Public\Client_Defines.h" />
+    <ClInclude Include="..\Public\ClientDefines.h" />
   </ItemGroup>
 </Project>
