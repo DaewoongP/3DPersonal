@@ -29,6 +29,7 @@
     <ClInclude Include="..\public\GameInstance.h" />
     <ClInclude Include="..\public\GraphicManager.h" />
     <ClInclude Include="..\public\ImGuiManager.h" />
+    <ClInclude Include="..\public\InputManager.h" />
     <ClInclude Include="..\public\Timer.h" />
     <ClInclude Include="..\public\TimerManager.h" />
     <ClInclude Include="ImGui\backends\imgui_impl_dx11.h">
@@ -67,6 +68,7 @@
     <ClCompile Include="..\private\GameInstance.cpp" />
     <ClCompile Include="..\private\GraphicManager.cpp" />
     <ClCompile Include="..\private\ImGuiManager.cpp" />
+    <ClCompile Include="..\private\InputManager.cpp" />
     <ClCompile Include="..\private\Timer.cpp" />
     <ClCompile Include="..\private\TimerManager.cpp" />
     <ClCompile Include="..\Public\EngineStruct.cpp" />

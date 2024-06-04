@@ -1,5 +1,5 @@
 #pragma once
-#include "Base.h"
+#include "InputManager.h"
 
 BEGIN(Engine)
 
@@ -20,6 +20,7 @@ public:
 #ifdef _DEBUG
 		_bool			showConsole{ false };
 		_bool			showFPS{ false };
+		_bool			showImGui{ false };
 #endif // _DEBUG
 	}GAMEDESC;
 
@@ -33,6 +34,11 @@ private:
 public:
 	ID3D11Device* GetDevice() const;
 	ID3D11DeviceContext* GetDeviceContext() const;
+
+public:
+	_bool KeyInput(_ubyte _keyID, CInputManager::InputType _state = CInputManager::InputType::PRESS);
+	_bool MouseInput(CInputManager::MouseKeyType _mouseID, CInputManager::InputType _state = CInputManager::InputType::PRESS);
+	_long MouseMove(CInputManager::MouseMoveType _mouseMoveID);
 
 public:
 	const GAMEDESC& GetGameDesc() { return mGameDesc; }
@@ -63,6 +69,7 @@ private:
 private:
 	class CGraphicManager*	mGraphic;
 	class CTimerManager*	mTimer;
+	class CInputManager*	mInput;
 
 #ifdef _DEBUG
 private:

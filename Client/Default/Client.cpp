@@ -27,6 +27,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 #ifdef _DEBUG
     gameDesc.showConsole = true;
     gameDesc.showFPS = true;
+    gameDesc.showImGui = true;
 #endif // _DEBUG
 
     INSTANCE->Run(gameDesc, 0);

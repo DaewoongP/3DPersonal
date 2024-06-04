@@ -1,9 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Client.cpp" />
+    <Filter Include="99. Headers">
+      <UniqueIdentifier>{da04f4a4-2b2a-4cd3-9bc9-042c1953a7a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Default">
+      <UniqueIdentifier>{45bfafed-6453-4287-961f-374184b09a3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Public\ClientDefines.h" />
+    <ClCompile Include="Client.cpp">
+      <Filter>98. Default</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Public\ClientDefines.h">
+      <Filter>99. Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

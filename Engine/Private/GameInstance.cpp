@@ -2,6 +2,7 @@
 #include "GraphicManager.h"
 #include "TimerManager.h"
 
+
 #ifdef _DEBUG
 #include "ImGuiManager.h"
 #endif // _DEBUG
@@ -16,6 +17,7 @@ CGameInstance::CGameInstance()
 	, mFPSAcc(0.f)
 	, mGraphic(GET_SINGLE(CGraphicManager))
 	, mTimer(GET_SINGLE(CTimerManager))
+	, mInput(GET_SINGLE(CInputManager))
 #ifdef _DEBUG
 	, mImGui(GET_SINGLE(CImGuiManager))
 #endif // _DEBUG
@@ -23,6 +25,7 @@ CGameInstance::CGameInstance()
 {
 	Utility::SafeAddRef(mGraphic);
 	Utility::SafeAddRef(mTimer);
+	Utility::SafeAddRef(mInput);
 
 #ifdef _DEBUG
 	Utility::SafeAddRef(mImGui);
@@ -32,6 +35,7 @@ CGameInstance::CGameInstance()
 HRESULT CGameInstance::Initialize()
 {
 	FAILED_CHECK(mGraphic->Initialize(mGameDesc.hWnd, mGameDesc.windowType, mGameDesc.width, mGameDesc.height));
+	FAILED_CHECK(mInput->Initialize(mGameDesc.hInstance, mGameDesc.hWnd));
 
 #ifdef _DEBUG
 	FAILED_CHECK(mImGui->Initialize(mGameDesc.hWnd, GetDevice(), GetDeviceContext()));
@@ -42,6 +46,10 @@ HRESULT CGameInstance::Initialize()
 
 ID3D11Device* CGameInstance::GetDevice() const { return mGraphic->GetDevice(); }
 ID3D11DeviceContext* CGameInstance::GetDeviceContext() const { return mGraphic->GetDeviceContext(); }
+
+_bool CGameInstance::KeyInput(_ubyte _keyID, CInputManager::InputType _state) { return mInput->KeyInput(_keyID, _state); }
+_bool CGameInstance::MouseInput(CInputManager::MouseKeyType _mouseID, CInputManager::InputType _state) { return mInput->MouseInput(_mouseID, _state); }
+_long CGameInstance::MouseMove(CInputManager::MouseMoveType _mouseMoveID) { return mInput->MouseMove(_mouseMoveID); }
 
 #pragma region Engine
 WPARAM CGameInstance::Run(GAMEDESC& _gameDesc, _uint numLevels)
@@ -202,9 +210,11 @@ void CGameInstance::Tick(_float _timeDelta)
 #ifdef _DEBUG
 	if (mGameDesc.showFPS)
 		ShowFPS(_timeDelta);
-	mImGui->Tick();
+	if (mGameDesc.showImGui)
+		mImGui->Tick();
 #endif // _DEBUG
 
+	mInput->Tick();
 }
 
 void CGameInstance::Render()
@@ -215,8 +225,11 @@ void CGameInstance::Render()
 	//FAILED_CHECK_RETURN(mGraphic->Render_Level(), E_FAIL);
 
 #ifdef _DEBUG
-	mImGui->Render();
-	mGraphic->BindBackBuffer();
+	if (mGameDesc.showImGui)
+	{
+		mImGui->Render();
+		mGraphic->BindBackBuffer();
+	}
 #endif // _DEBUG
 
 	mGraphic->Present();
@@ -226,6 +239,7 @@ void CGameInstance::ReleaseEngine()
 {
 	mGraphic->DestroyInstance();
 	mTimer->DestroyInstance();
+	mInput->DestroyInstance();
 
 #ifdef _DEBUG
 	mImGui->DestroyInstance();
@@ -236,6 +250,7 @@ void CGameInstance::Free()
 {
 	Utility::SafeRelease(mGraphic);
 	Utility::SafeRelease(mTimer);
+	Utility::SafeRelease(mInput);
 
 #ifdef _DEBUG
 	Utility::SafeRelease(mImGui);

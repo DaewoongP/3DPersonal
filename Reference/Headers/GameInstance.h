@@ -20,6 +20,7 @@ public:
 #ifdef _DEBUG
 		_bool			showConsole{ false };
 		_bool			showFPS{ false };
+		_bool			showImGui{ false };
 #endif // _DEBUG
 	}GAMEDESC;
 
@@ -63,6 +64,7 @@ private:
 private:
 	class CGraphicManager*	mGraphic;
 	class CTimerManager*	mTimer;
+	class CInputManager*	mInput;
 
 #ifdef _DEBUG
 private:
