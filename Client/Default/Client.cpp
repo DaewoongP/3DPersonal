@@ -1,12 +1,7 @@
-﻿// Client.cpp : 애플리케이션에 대한 진입점을 정의합니다.
-//
-
-#include "framework.h"
+﻿#include "framework.h"
 #include "Client.h"
 #include "ClientDefines.h"
 #include "GameInstance.h"
-
-//#include "MainApp.h"
 
 USING(Client)
 USING(Engine)

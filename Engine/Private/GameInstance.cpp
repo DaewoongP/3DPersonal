@@ -1,7 +1,7 @@
 #include "GameInstance.h"
 #include "GraphicManager.h"
 #include "TimerManager.h"
-
+#include "LevelManager.h"
 
 #ifdef _DEBUG
 #include "ImGuiManager.h"
@@ -18,6 +18,7 @@ CGameInstance::CGameInstance()
 	, mGraphic(GET_SINGLE(CGraphicManager))
 	, mTimer(GET_SINGLE(CTimerManager))
 	, mInput(GET_SINGLE(CInputManager))
+	, mLevel(GET_SINGLE(CLevelManager))
 #ifdef _DEBUG
 	, mImGui(GET_SINGLE(CImGuiManager))
 #endif // _DEBUG
@@ -26,6 +27,7 @@ CGameInstance::CGameInstance()
 	Utility::SafeAddRef(mGraphic);
 	Utility::SafeAddRef(mTimer);
 	Utility::SafeAddRef(mInput);
+	Utility::SafeAddRef(mLevel);
 
 #ifdef _DEBUG
 	Utility::SafeAddRef(mImGui);
@@ -139,7 +141,6 @@ BOOL CGameInstance::InitInstance(_int _cmdShow)
 	return TRUE;
 }
 
-
 #ifdef _DEBUG
 void CGameInstance::ShowFPS(_float _timeDelta)
 {
@@ -215,6 +216,7 @@ void CGameInstance::Tick(_float _timeDelta)
 #endif // _DEBUG
 
 	mInput->Tick();
+	mLevel->Tick(_timeDelta);
 }
 
 void CGameInstance::Render()
@@ -240,6 +242,7 @@ void CGameInstance::ReleaseEngine()
 	mGraphic->DestroyInstance();
 	mTimer->DestroyInstance();
 	mInput->DestroyInstance();
+	mLevel->DestroyInstance();
 
 #ifdef _DEBUG
 	mImGui->DestroyInstance();
@@ -251,6 +254,7 @@ void CGameInstance::Free()
 	Utility::SafeRelease(mGraphic);
 	Utility::SafeRelease(mTimer);
 	Utility::SafeRelease(mInput);
+	Utility::SafeRelease(mLevel);
 
 #ifdef _DEBUG
 	Utility::SafeRelease(mImGui);

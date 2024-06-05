@@ -70,6 +70,7 @@ private:
 	class CGraphicManager*	mGraphic;
 	class CTimerManager*	mTimer;
 	class CInputManager*	mInput;
+	class CLevelManager*	mLevel;
 
 #ifdef _DEBUG
 private:

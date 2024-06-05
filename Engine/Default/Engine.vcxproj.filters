@@ -70,6 +70,21 @@
     <ClInclude Include="..\public\ImGuiManager.h">
       <Filter>96. ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="..\public\Component.h">
+      <Filter>01. Utility\01. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\ComponentManager.h">
+      <Filter>01. Utility\01. Component\00. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\Composite.h">
+      <Filter>01. Utility\01. Component\01. Composite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\Level.h">
+      <Filter>01. Utility\02. Level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\LevelManager.h">
+      <Filter>01. Utility\02. Level\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="99. Headers">
@@ -113,6 +128,36 @@
     </Filter>
     <Filter Include="96. ImGui\etc">
       <UniqueIdentifier>{7d1ef5fa-a1f9-4155-b143-ee28e8b27e90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\01. Component\00. Manager">
+      <UniqueIdentifier>{464b7efe-0909-4e8f-9fdb-6787e068a1a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\01. Component\01. Composite">
+      <UniqueIdentifier>{cf7d2736-279b-4998-89bd-80188353af0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\01. Component\02. Buffer">
+      <UniqueIdentifier>{5dab3f9b-7a41-44c0-a2e0-dbe6dcfc87d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\01. Component\03. Shader">
+      <UniqueIdentifier>{d2bdbc25-7fac-4c50-86c7-bfb28c5b0bc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\01. Component\04. Texture">
+      <UniqueIdentifier>{c0719e90-456d-4944-8f53-679b582300a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\02. Level">
+      <UniqueIdentifier>{2a4e2a51-e1c5-4d0f-82d5-ef1f2af42568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\03. Render">
+      <UniqueIdentifier>{28592801-e217-4987-b150-aec951a55dcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\03. Render\00. Manager">
+      <UniqueIdentifier>{96fb7989-ae95-4bc8-b33c-b431c0982990}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\04 .Font">
+      <UniqueIdentifier>{578ebf6f-4087-4a02-a5d5-648620c1f083}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\02. Level\Manager">
+      <UniqueIdentifier>{eb79be0e-7e93-4530-b2cc-aa00c26d3d24}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +208,21 @@
     </ClCompile>
     <ClCompile Include="..\private\ImGuiManager.cpp">
       <Filter>96. ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\Component.cpp">
+      <Filter>01. Utility\01. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\ComponentManager.cpp">
+      <Filter>01. Utility\01. Component\00. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\Composite.cpp">
+      <Filter>01. Utility\01. Component\01. Composite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\Level.cpp">
+      <Filter>01. Utility\02. Level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\LevelManager.cpp">
+      <Filter>01. Utility\02. Level\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

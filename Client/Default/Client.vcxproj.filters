@@ -7,6 +7,12 @@
     <Filter Include="98. Default">
       <UniqueIdentifier>{45bfafed-6453-4287-961f-374184b09a3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="00. Object">
+      <UniqueIdentifier>{6f821b8b-6ffd-47ea-9303-8ffb17ece910}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Level">
+      <UniqueIdentifier>{2cb02aa7-d184-40a1-82e9-995a95289b32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
