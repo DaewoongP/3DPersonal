@@ -4,22 +4,23 @@
 
 BEGIN(Client)
 
-class LevelLoading : public Engine::Level
+class CLevelLoading : public Engine::CLevel
 {
 public:
-	LevelLoading() = default;
-	~LevelLoading();
+	explicit CLevelLoading() = default;
+	virtual ~CLevelLoading() = default;
 
 public:
 	HRESULT Initialize(LevelType _levelType);
 	virtual void Tick(_float _timeDelta) override;
 
 private:
-	std::unique_ptr<Loader>	mLoader;
-	LevelType				mNextLevelType;
+	CLoader*	mLoader;
+	LevelType	mNextLevelType;
 
 public:
-	static std::unique_ptr<LevelLoading> Create(LevelType _nextLevelType);
+	static CLevelLoading* Create(LevelType _nextLevelType);
+	virtual void Free() final;
 };
 
 END

@@ -2,25 +2,32 @@
 #include "GameInstance.h"
 #include "LevelLoading.h"
 
-HRESULT Client::LevelLogo::Initialize()
+HRESULT Client::CLevelLogo::Initialize()
 {
 	return S_OK;
 }
 
-void Client::LevelLogo::Tick(_float _timeDelta)
+void Client::CLevelLogo::Tick(_float _timeDelta)
 {
 	DebugFunc::Text("Logo - Level", _timeDelta);
-
-	if (GAME->GetDIKeyState(DIK_RETURN, Engine::InputDevice::KEY_DOWN))
+	
+	if (GAME->KeyInput(DIK_RETURN, Engine::CInputManager::InputType::DOWN))
 	{
 		DebugFunc::Text("Enter!");
-		FAILED_RETURN(GAME->OpenLevel(static_cast<_uint>(LevelType::LOADING), Client::LevelLoading::Create(LevelType::PLAY1)), );
+		FAILED_RETURN(GAME->OpenLevel(static_cast<_uint>(LevelType::LOADING), Client::CLevelLoading::Create(LevelType::PLAY1)), );
 	}
 }
 
-std::unique_ptr<Client::LevelLogo> Client::LevelLogo::Create()
+Client::CLevelLogo* Client::CLevelLogo::Create()
 {
-	auto instance = std::make_unique<Client::LevelLogo>();
-	FAILED_CHECK_RETURN_MSG(instance->Initialize(), nullptr, TEXT("Failed"));
+	auto instance = _new CLevelLogo;
+
+	NULL_CHECK_RETURN_MSG(instance, nullptr, TEXT("new instance nullptr"));
+	FAILED_CHECK_RETURN_MSG(instance->Initialize(), nullptr, TEXT("Create Failed"))
+
 	return instance;
+}
+
+void Client::CLevelLogo::Free()
+{
 }

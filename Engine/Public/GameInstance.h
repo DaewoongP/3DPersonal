@@ -28,21 +28,23 @@ private:
 	explicit CGameInstance();
 	virtual ~CGameInstance() = default;
 
-private:
-	HRESULT Initialize();
-
-public:
+public: // Device
 	ID3D11Device* GetDevice() const;
 	ID3D11DeviceContext* GetDeviceContext() const;
 
-public:
+public: // Input
 	_bool KeyInput(_ubyte _keyID, CInputManager::InputType _state = CInputManager::InputType::PRESS);
 	_bool MouseInput(CInputManager::MouseKeyType _mouseID, CInputManager::InputType _state = CInputManager::InputType::PRESS);
 	_long MouseMove(CInputManager::MouseMoveType _mouseMoveID);
 
+public: // Level
+	_uint GetCurrentLevelIndex() const;
+	HRESULT OpenLevel(_uint _levelIndex, class CLevel* _newLevel);
+
 public:
 	const GAMEDESC& GetGameDesc() { return mGameDesc; }
-	WPARAM Run(GAMEDESC& _gameDesc, _uint numLevels);
+	HRESULT Initialize(GAMEDESC& _gameDesc, _uint numLevels);
+	WPARAM Run();
 	
 private:
 	ATOM MyRegisterClass();
@@ -83,4 +85,4 @@ public:
 
 END
 
-#define INSTANCE	GET_SINGLE(Engine::CGameInstance)
+#define GAME	GET_SINGLE(Engine::CGameInstance)

@@ -34,27 +34,19 @@ CGameInstance::CGameInstance()
 #endif // _DEBUG
 }
 
-HRESULT CGameInstance::Initialize()
-{
-	FAILED_CHECK(mGraphic->Initialize(mGameDesc.hWnd, mGameDesc.windowType, mGameDesc.width, mGameDesc.height));
-	FAILED_CHECK(mInput->Initialize(mGameDesc.hInstance, mGameDesc.hWnd));
-
-#ifdef _DEBUG
-	FAILED_CHECK(mImGui->Initialize(mGameDesc.hWnd, GetDevice(), GetDeviceContext()));
-#endif // _DEBUG
-
-	return S_OK;
-}
-
+// Device
 ID3D11Device* CGameInstance::GetDevice() const { return mGraphic->GetDevice(); }
 ID3D11DeviceContext* CGameInstance::GetDeviceContext() const { return mGraphic->GetDeviceContext(); }
-
+// Input
 _bool CGameInstance::KeyInput(_ubyte _keyID, CInputManager::InputType _state) { return mInput->KeyInput(_keyID, _state); }
 _bool CGameInstance::MouseInput(CInputManager::MouseKeyType _mouseID, CInputManager::InputType _state) { return mInput->MouseInput(_mouseID, _state); }
 _long CGameInstance::MouseMove(CInputManager::MouseMoveType _mouseMoveID) { return mInput->MouseMove(_mouseMoveID); }
+// Level
+_uint CGameInstance::GetCurrentLevelIndex() const { return mLevel->GetCurrentLevelIndex(); }
+HRESULT CGameInstance::OpenLevel(_uint _levelIndex, CLevel* _newLevel) { return mLevel->OpenLevel(_levelIndex, _newLevel); }
 
 #pragma region Engine
-WPARAM CGameInstance::Run(GAMEDESC& _gameDesc, _uint numLevels)
+HRESULT CGameInstance::Initialize(GAMEDESC& _gameDesc, _uint numLevels)
 {
 	mGameDesc = _gameDesc;
 
@@ -68,10 +60,20 @@ WPARAM CGameInstance::Run(GAMEDESC& _gameDesc, _uint numLevels)
 	MyRegisterClass();
 
 	if (!InitInstance(SW_SHOWNORMAL))
-		return FALSE;
+		return E_FAIL;
 
-	Initialize();
-	
+	FAILED_CHECK(mGraphic->Initialize(mGameDesc.hWnd, mGameDesc.windowType, mGameDesc.width, mGameDesc.height));
+	FAILED_CHECK(mInput->Initialize(mGameDesc.hInstance, mGameDesc.hWnd));
+
+#ifdef _DEBUG
+	FAILED_CHECK(mImGui->Initialize(mGameDesc.hWnd, GetDevice(), GetDeviceContext()));
+#endif // _DEBUG
+
+	return S_OK;
+}
+
+WPARAM CGameInstance::Run()
+{
 	MSG msg{ 0 };
 	_float	timeAcc{ 0.f };
 

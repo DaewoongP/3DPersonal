@@ -4,7 +4,7 @@ _uint WINAPI Thread_Main(void* _arg)
 {
 	using namespace Client;
 
-	Loader* loader = reinterpret_cast<Loader*>(_arg);
+	CLoader* loader = reinterpret_cast<CLoader*>(_arg);
 
 	if (FAILED(loader->Loading()))
 		return 0;
@@ -12,15 +12,7 @@ _uint WINAPI Thread_Main(void* _arg)
 	return 0;
 }
 
-Client::Loader::~Loader()
-{
-	WaitForSingleObject(mhThread, INFINITE);
-
-	DeleteCriticalSection(&mCriticalSection);
-	CloseHandle(mhThread);
-}
-
-HRESULT Client::Loader::Initialize(LevelType _levelType)
+HRESULT Client::CLoader::Initialize(LevelType _levelType)
 {
 	mNextLevelType = _levelType;
 
@@ -38,7 +30,7 @@ HRESULT Client::Loader::Initialize(LevelType _levelType)
 	return S_OK;
 }
 
-HRESULT Client::Loader::Loading()
+HRESULT Client::CLoader::Loading()
 {
 	FAILED_CHECK_RETURN_MSG(CoInitializeEx(nullptr, 0), E_FAIL, TEXT("Failed"));
 
@@ -67,23 +59,34 @@ HRESULT Client::Loader::Loading()
 	return S_OK;
 }
 
-HRESULT Client::Loader::LoadingForLogo()
+HRESULT Client::CLoader::LoadingForLogo()
 {
 	mFinished = true;
 
 	return S_OK;
 }
 
-HRESULT Client::Loader::LoadingForPlay1()
+HRESULT Client::CLoader::LoadingForPlay1()
 {
 	mFinished = true;
 
 	return S_OK;
 }
 
-std::unique_ptr<Client::Loader> Client::Loader::Create(LevelType _levelType)
+Client::CLoader* Client::CLoader::Create(LevelType _levelType)
 {
-	auto instance = std::make_unique<Client::Loader>();
-	FAILED_CHECK_RETURN_MSG(instance->Initialize(_levelType), nullptr, TEXT("Failed"));
+	auto instance = _new CLoader;
+
+	NULL_CHECK_RETURN_MSG(instance, nullptr, TEXT("new instance nullptr"));
+	FAILED_CHECK_RETURN_MSG(instance->Initialize(_levelType), nullptr, TEXT("Create Failed"))
+
 	return instance;
+}
+
+void Client::CLoader::Free()
+{
+	WaitForSingleObject(mhThread, INFINITE);
+
+	DeleteCriticalSection(&mCriticalSection);
+	CloseHandle(mhThread);
 }

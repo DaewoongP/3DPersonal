@@ -1,47 +1,52 @@
 #include "LevelLoading.h"
 #include "GameInstance.h"
 
+#include "Loader.h"
 #include "LevelLogo.h"
 #include "LevelPlay1.h"
 
-Client::LevelLoading::~LevelLoading()
-{
-}
-
-HRESULT Client::LevelLoading::Initialize(LevelType _levelType)
+HRESULT Client::CLevelLoading::Initialize(LevelType _levelType)
 {
 	mNextLevelType = _levelType;
 
-	mLoader = Client::Loader::Create(_levelType);
+	mLoader = Client::CLoader::Create(_levelType);
 
 	return S_OK;
 }
 
-void Client::LevelLoading::Tick(_float _timeDelta)
+void Client::CLevelLoading::Tick(_float _timeDelta)
 {
 	DebugFunc::Text("Loading...", _timeDelta);
 
 	if (false == mLoader->IsFinished())
 		return;
 
-	std::unique_ptr<Level> level;
+	CLevel* level{ nullptr };
 
 	switch (mNextLevelType)
 	{
 	case LevelType::LOGO:
-		level = Client::LevelLogo::Create();
+		level = Client::CLevelLogo::Create();
 		break;
 	case LevelType::PLAY1:
-		level = Client::LevelPlay1::Create();
+		level = Client::CLevelPlay1::Create();
 		break;
 	}
 
-	FAILED_RETURN(GAME->OpenLevel(static_cast<_uint>(mNextLevelType), std::move(level)), );
+	FAILED_RETURN(GAME->OpenLevel(static_cast<_uint>(mNextLevelType), level), );
 }
 
-std::unique_ptr<Client::LevelLoading> Client::LevelLoading::Create(LevelType _nextLevelType)
+Client::CLevelLoading* Client::CLevelLoading::Create(LevelType _nextLevelType)
 {
-	auto instance = std::make_unique<Client::LevelLoading>();
-	FAILED_CHECK_RETURN_MSG(instance->Initialize(_nextLevelType), nullptr, TEXT("Failed"));
+	auto instance = _new CLevelLoading;
+
+	NULL_CHECK_RETURN_MSG(instance, nullptr, TEXT("new instance nullptr"));
+	FAILED_CHECK_RETURN_MSG(instance->Initialize(_nextLevelType), nullptr, TEXT("Create Failed"))
+
 	return instance;
+}
+
+void Client::CLevelLoading::Free()
+{
+	Utility::SafeRelease(mLoader);
 }

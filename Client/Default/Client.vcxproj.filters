@@ -13,15 +13,48 @@
     <Filter Include="01. Level">
       <UniqueIdentifier>{2cb02aa7-d184-40a1-82e9-995a95289b32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Level\99. Loader">
+      <UniqueIdentifier>{02b14c0a-e476-408f-8def-b84267248aae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Level\00. Logo">
+      <UniqueIdentifier>{bb213290-e688-438c-8da1-54b8dc1ad7f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Level\01. Play1">
+      <UniqueIdentifier>{3f8aff89-e1d7-4a55-b661-ace147d73df5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
       <Filter>98. Default</Filter>
     </ClCompile>
+    <ClCompile Include="..\Private\Loader.cpp">
+      <Filter>01. Level\99. Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\LevelLoading.cpp">
+      <Filter>01. Level\99. Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\LevelLogo.cpp">
+      <Filter>01. Level\00. Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\LevelPlay1.cpp">
+      <Filter>01. Level\01. Play1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\ClientDefines.h">
       <Filter>99. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Loader.h">
+      <Filter>01. Level\99. Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\LevelLoading.h">
+      <Filter>01. Level\99. Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\LevelLogo.h">
+      <Filter>01. Level\00. Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\LevelPlay1.h">
+      <Filter>01. Level\01. Play1</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

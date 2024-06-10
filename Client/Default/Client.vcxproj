@@ -19,10 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Private\LevelLoading.cpp" />
+    <ClCompile Include="..\private\LevelLogo.cpp" />
+    <ClCompile Include="..\private\LevelPlay1.cpp" />
+    <ClCompile Include="..\Private\Loader.cpp" />
     <ClCompile Include="Client.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\ClientDefines.h" />
+    <ClInclude Include="..\Public\LevelLoading.h" />
+    <ClInclude Include="..\public\LevelLogo.h" />
+    <ClInclude Include="..\public\LevelPlay1.h" />
+    <ClInclude Include="..\Public\Loader.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

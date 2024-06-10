@@ -2,6 +2,7 @@
 #include "Client.h"
 #include "ClientDefines.h"
 #include "GameInstance.h"
+#include "LevelLogo.h"
 
 USING(Client)
 USING(Engine)
@@ -25,9 +26,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     gameDesc.showImGui = true;
 #endif // _DEBUG
 
-    INSTANCE->Run(gameDesc, 0);
+    GAME->Initialize(gameDesc, 0);
+    GAME->OpenLevel(static_cast<_uint>(LevelType::LOGO), CLevelLogo::Create());
+    GAME->Run();
 
-    INSTANCE->DestroyInstance();
+    GAME->DestroyInstance();
 
     return 0;
 }

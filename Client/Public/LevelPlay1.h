@@ -1,24 +1,22 @@
 #pragma once
 #include "Level.h"
-#include "Client_Defines.h"
+#include "ClientDefines.h"
 
 BEGIN(Client)
 
-class LevelPlay1 : public Engine::Level
+class CLevelPlay1 : public Engine::CLevel
 {
 public:
-	LevelPlay1() = default;
-	~LevelPlay1() = default;
+	explicit CLevelPlay1() = default;
+	virtual ~CLevelPlay1() = default;
 
 public:
 	virtual HRESULT Initialize() override;
 	virtual void Tick(_float _timeDelta) override;
 
-private:
-	std::shared_ptr<class TestObject> test;
-
 public:
-	static std::unique_ptr<LevelPlay1> Create();
+	static CLevelPlay1* Create();
+	virtual void Free() final;
 };
 
 END

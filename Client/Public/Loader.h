@@ -1,14 +1,14 @@
 #pragma once
-#include "Engine_Defines.h"
-#include "Client_Defines.h"
+#include "Base.h"
+#include "ClientDefines.h"
 
 BEGIN(Client)
 
-class Loader
+class CLoader : public Engine::CBase
 {
 public:
-	Loader() = default;
-	~Loader();
+	explicit CLoader() = default;
+	virtual ~CLoader() = default;
 public:
 	_bool IsFinished() const { return mFinished; }
 
@@ -30,7 +30,8 @@ private:
 	_bool				mFinished;
 
 public:
-	static std::unique_ptr<Loader> Create(LevelType _levelType);
+	static CLoader* Create(LevelType _levelType);
+	virtual void Free() final;
 };
 
 END
